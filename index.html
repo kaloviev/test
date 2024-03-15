@@ -1,0 +1,50 @@
+<!doctype html>
+<html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Read Medium</title>
+    <!-- <link rel="stylesheet" href="css/style.css" /> -->
+    <meta name="description" content="Read medium" />
+
+    <!-- <link rel="icon" href="/favicon.ico" sizes="any" /> -->
+    <!-- <link rel="icon" href="/icon.svg" type="image/svg+xml" /> -->
+    <!-- <link rel="apple-touch-icon" href="icon.png" /> -->
+    <!---->
+    <!-- <meta name="theme-color" content="#fafafa" /> -->
+  </head>
+
+  <body>
+    <header>
+      <form id="form">
+        <input type="text" name="url" id="url" />
+        <button>Go</button>
+      </form>
+    </header>
+
+    <main>
+      <iframe
+        id="iframe"
+        sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
+        src="about:blank"
+      ></iframe>
+    </main>
+
+    <footer></footer>
+
+    <script>
+      const formNode = document.getElementById("form");
+      const iframeNode = document.getElementById("iframe");
+      formNode.addEventListener("submit", submitHandler);
+
+      function submitHandler(event) {
+        event.preventDefault();
+
+        const formData = new FormData(formNode);
+
+        const url = formData.get("url");
+        iframeNode.setAttribute("src", url);
+      }
+    </script>
+  </body>
+</html>
